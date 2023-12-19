@@ -12,7 +12,7 @@ export const statsReducer = (stats = initialStats, action: Action): Stats => {
     switch (action.type) {
         case CHANGE_STATS:
             const statsType = action.payload.statsType as StatsType
-            let res = stats[statsType] + (action.payload.isIncrement ? 1 : -1);
+            let res = stats.stats[statsType] + (action.payload.isIncrement ? 1 : -1);
             res = res < 0 ? 0 : res
             return {...stats, [statsType] : res}
 

@@ -1,4 +1,4 @@
-import {Action, State, User} from "../utils/type";
+import {Action, User} from "../utils/type";
 import {CHANGE_AVATAR, CHANGE_NAME} from "../actions/userActions";
 
 export const initialUser: User = {
@@ -11,9 +11,9 @@ export const initialUser: User = {
 export const userReducer = (user = initialUser, action: Action): User => {
     switch (action.type) {
         case CHANGE_NAME:
-            return {...user, name: action.payload || user.name}
+            return {...user, user: action.payload || user.user.name}
         case CHANGE_AVATAR:
-            return {...user, avatar: action.payload || user.avatar}
+            return {...user, user: action.payload || user.user.avatar}
         default:
             return user
     }
