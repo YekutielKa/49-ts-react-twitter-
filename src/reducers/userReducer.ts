@@ -8,13 +8,13 @@ export const initialUser: User = {
     },
 }
 
-export const userReducer = (state = initialUser, action: Action): State => {
+export const userReducer = (user = initialUser, action: Action): User => {
     switch (action.type) {
         case CHANGE_NAME:
-            return {...state, user: {...state.user, name: action.payload || state.user.name}}
+            return {...user, name: action.payload || user.name}
         case CHANGE_AVATAR:
-            return {...state, user: {...state.user, avatar: action.payload || state.user.avatar}}
+            return {...user, avatar: action.payload || user.avatar}
         default:
-            return state
+            return user
     }
 }

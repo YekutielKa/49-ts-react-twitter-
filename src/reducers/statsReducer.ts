@@ -8,16 +8,15 @@ export const initialStats: Stats = {
     }
 }
 
-export const statsReducer = (state = initialStats, action: Action): State => {
+export const statsReducer = (stats = initialStats, action: Action): Stats => {
     switch (action.type) {
         case CHANGE_STATS:
             const statsType = action.payload.statsType as StatsType
-            let res = state.stats[statsType] + (action.payload.isIncrement ? 1 : -1);
+            let res = stats[statsType] + (action.payload.isIncrement ? 1 : -1);
             res = res < 0 ? 0 : res
-            // return {...state, stats: {...state, [statsType]: res}}
-            return {...state, stats: {[statsType] : res}}
+            return {...stats, [statsType] : res}
 
         default:
-            return state
+            return stats
     }
 }
